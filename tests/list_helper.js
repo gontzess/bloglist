@@ -45,7 +45,9 @@ const list = {
     likes: 15
   },
 
-  invalidId: '31904b494883f96a461d39cd',
+  nonexistentId: '31904b494883f96a461d39cd',
+
+  malformattedId: '31904b49',
 
   dummy(blogs) {
     return 1;
