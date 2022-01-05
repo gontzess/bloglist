@@ -1,4 +1,4 @@
-const list = {
+const helper = {
   testBlogs: [
     {
       title: "Book 1",
@@ -49,31 +49,20 @@ const list = {
 
   malformattedId: '31904b49',
 
-  dummy(blogs) {
-    return 1;
-  },
-
-  totalLikes(blogs) {
-    let total = 0;
-    blogs.forEach(blog => total += blog.likes);
-
-    return total;
-  },
-
-  favoriteBlog(blogs) {
-    if (blogs.length === 0) {
-      return null;
+  testUsers: [
+    {
+      username: "someone",
+      password: "somesecret",
+      name: "Some One",
+      blogs: []
+    },
+    {
+      username: "tester",
+      password: "testingsecret",
+      name: "Tester",
+      blogs: []
     }
-
-    let favorite = blogs[0];
-    blogs.forEach(blog => {
-      if (favorite.likes < blog.likes) {
-        favorite = blog;
-      }
-    });
-
-    return favorite;
-  },
+  ],
 };
 
-export default list;
+export default helper;
