@@ -48,8 +48,6 @@ function App() {
     setPassword('');
   }
 
-
-
   return (
     <div>
       <h2>Blogs</h2>
@@ -64,6 +62,7 @@ function App() {
         : <UserOverview
           user={user}
           blogs={blogs}
+          setBlogs={setBlogs}
           handleLogout={handleLogout}
         />
       }

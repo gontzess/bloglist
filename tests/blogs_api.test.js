@@ -63,8 +63,7 @@ describe('testing "api/blogs" endpoint', () => {
         .expect(200)
         .expect('Content-Type', /application\/json/);
 
-      expect(JSON.stringify(response.body))
-        .toBe(JSON.stringify(targetBlog));
+      expect(response.body).toMatchObject(targetBlog);
     });
 
     test('returns 404 with a nonexistent id query', async () => {
@@ -216,15 +215,15 @@ describe('testing "api/blogs" endpoint', () => {
         .send({ likes: targetBlog.likes + 5 })
         .expect(200);
 
-      expect(JSON.stringify(putResponse.body))
-        .toBe(JSON.stringify({ ...targetBlog, likes: targetBlog.likes + 5 }));
+      expect(putResponse.body)
+        .toMatchObject({ ...targetBlog, likes: targetBlog.likes + 5 });
 
       const getResponse = await api
         .get(`/api/blogs/${targetBlog.id}`)
         .expect(200);
 
-      expect(JSON.stringify(getResponse.body))
-        .toBe(JSON.stringify({ ...targetBlog, likes: targetBlog.likes + 5 }));
+      expect(getResponse.body)
+        .toMatchObject({ ...targetBlog, likes: targetBlog.likes + 5 });
     });
 
     test('returns 400 with invalid (negative) likes', async () => {
@@ -240,8 +239,7 @@ describe('testing "api/blogs" endpoint', () => {
         .get(`/api/blogs/${targetBlog.id}`)
         .expect(200);
 
-      expect(JSON.stringify(getResponse.body))
-        .toBe(JSON.stringify(targetBlog));
+      expect(getResponse.body).toMatchObject(targetBlog);
     });
 
     test('returns 404 with a nonexistent id query', async () => {
